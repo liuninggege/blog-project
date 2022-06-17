@@ -1,0 +1,72 @@
+# 项目相关配置
+blog:
+  # 名称
+  name: BlogProject
+  # 版本
+  version: 0.0.1
+  # 版权年份
+  copyrightYear: 2022
+  # 实例演示开关
+  demoEnabled: true
+  # 文件路径 示例（ Windows配置D:/file/blog/uploadPath，Linux配置 /home/blog/uploadPath）
+  profile: D:/file/blog/uploadPath
+  # 获取ip地址开关
+  addressEnabled: false
+  # 验证码类型 math 数组计算 char 字符验证
+  captchaType: math
+  # 允许错误次数
+  allowErrorCount: 3
+
+#开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 9090
+
+# Spring配置
+spring:
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/messages
+  profiles:
+    active: dev
+  # 文件上传
+  servlet:
+    multipart:
+      #   单个文件大小
+      max-file-size: 10MB
+      # 设置总上传的文件大小
+      max-request-size: 20MB
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+
+# MyBatis配置
+mybatis-plus:
+  #mapper映射文件路径
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  #配置扫描包别名
+  type-aliases-package: top.blog.**.domain
+  #日志配置
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #逻辑删除配置
+  global-config:
+    db-config:
+      # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+      logic-delete-field: del_flag
+      # 逻辑已删除值(默认为 1)
+      logic-delete-value: 2
+      # 逻辑未删除值(默认为 0)
+      logic-not-delete-value: 0
+
+# PageHelper分页插件
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+
+
+
